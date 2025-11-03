@@ -113,6 +113,27 @@ export const messages = pgTable("messages", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+export const upgradeAttempts = pgTable("upgrade_attempts", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  userId: varchar("user_id").notNull(),
+  sourceItemId: varchar("source_item_id").notNull(),
+  targetItemId: varchar("target_item_id").notNull(),
+  successChance: decimal("success_chance", { precision: 5, scale: 2 }).notNull(),
+  success: boolean("success").notNull(),
+  resultItemId: varchar("result_item_id"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const caseOpenings = pgTable("case_openings", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  userId: varchar("user_id").notNull(),
+  caseId: varchar("case_id").notNull(),
+  itemWonId: varchar("item_won_id").notNull(),
+  serverSeed: text("server_seed").notNull(),
+  clientSeed: text("client_seed").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 export type User = typeof users.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type Case = typeof cases.$inferSelect;
@@ -123,13 +144,17 @@ export type GameHistory = typeof gameHistory.$inferSelect;
 export type CoinflipGame = typeof coinflipGames.$inferSelect;
 export type Conversation = typeof conversations.$inferSelect;
 export type Message = typeof messages.$inferSelect;
+export type UpgradeAttempt = typeof upgradeAttempts.$inferSelect;
+export type CaseOpening = typeof caseOpenings.$inferSelect;
 
-export const insertUserSchema = createInsertSchema(users);
-export const insertCaseSchema = createInsertSchema(cases);
-export const insertItemSchema = createInsertSchema(items);
-export const insertInventorySchema = createInsertSchema(inventory);
-export const insertTransactionSchema = createInsertSchema(transactions);
-export const insertGameHistorySchema = createInsertSchema(gameHistory);
-export const insertCoinflipGameSchema = createInsertSchema(coinflipGames);
-export const insertConversationSchema = createInsertSchema(conversations);
-export const insertMessageSchema = createInsertSchema(messages);
+export const insertUserSchema = createInsertSchema(users).omit({ id: true, createdAt: true, updatedAt: true });
+export const insertCaseSchema = createInsertSchema(cases).omit({ id: true, createdAt: true });
+export const insertItemSchema = createInsertSchema(items).omit({ id: true, createdAt: true });
+export const insertInventorySchema = createInsertSchema(inventory).omit({ id: true, acquiredAt: true });
+export const insertTransactionSchema = createInsertSchema(transactions).omit({ id: true, createdAt: true });
+export const insertGameHistorySchema = createInsertSchema(gameHistory).omit({ id: true, createdAt: true });
+export const insertCoinflipGameSchema = createInsertSchema(coinflipGames).omit({ id: true, createdAt: true });
+export const insertConversationSchema = createInsertSchema(conversations).omit({ id: true, createdAt: true, updatedAt: true });
+export const insertMessageSchema = createInsertSchema(messages).omit({ id: true, createdAt: true });
+export const insertUpgradeAttemptSchema = createInsertSchema(upgradeAttempts).omit({ id: true, createdAt: true });
+export const insertCaseOpeningSchema = createInsertSchema(caseOpenings).omit({ id: true, createdAt: true });

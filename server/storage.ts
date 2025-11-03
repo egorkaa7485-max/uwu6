@@ -1,7 +1,8 @@
 import { 
   type User, type InsertUser, type Case, type Item, 
   type Inventory, type Transaction, type GameHistory,
-  type CoinflipGame, type Conversation, type Message
+  type CoinflipGame, type Conversation, type Message,
+  type UpgradeAttempt, type CaseOpening
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 
@@ -39,6 +40,12 @@ export interface IStorage {
   createMessage(message: Partial<Message>): Promise<Message>;
   getConversationMessages(conversationId: string): Promise<Message[]>;
   markMessagesAsRead(conversationId: string): Promise<void>;
+  
+  createUpgradeAttempt(attempt: Partial<UpgradeAttempt>): Promise<UpgradeAttempt>;
+  getUserUpgradeHistory(userId: string): Promise<UpgradeAttempt[]>;
+  
+  createCaseOpening(opening: Partial<CaseOpening>): Promise<CaseOpening>;
+  getRecentCaseOpenings(limit?: number): Promise<CaseOpening[]>;
 }
 
 export class MemStorage implements IStorage {
@@ -51,6 +58,8 @@ export class MemStorage implements IStorage {
   private coinflipGames: Map<string, CoinflipGame>;
   private conversations: Map<string, Conversation>;
   private messages: Map<string, Message>;
+  private upgradeAttempts: Map<string, UpgradeAttempt>;
+  private caseOpenings: Map<string, CaseOpening>;
 
   constructor() {
     this.users = new Map();
@@ -62,6 +71,8 @@ export class MemStorage implements IStorage {
     this.coinflipGames = new Map();
     this.conversations = new Map();
     this.messages = new Map();
+    this.upgradeAttempts = new Map();
+    this.caseOpenings = new Map();
     this.initializeMockData();
   }
 
@@ -305,6 +316,49 @@ export class MemStorage implements IStorage {
     messages.forEach(m => {
       this.messages.set(m.id, { ...m, read: true });
     });
+  }
+
+  async createUpgradeAttempt(attemptData: Partial<UpgradeAttempt>): Promise<UpgradeAttempt> {
+    const id = randomUUID();
+    const attempt: UpgradeAttempt = {
+      id,
+      userId: attemptData.userId || "",
+      sourceItemId: attemptData.sourceItemId || "",
+      targetItemId: attemptData.targetItemId || "",
+      successChance: attemptData.successChance || "0",
+      success: attemptData.success || false,
+      resultItemId: attemptData.resultItemId || null,
+      createdAt: new Date(),
+    };
+    this.upgradeAttempts.set(id, attempt);
+    return attempt;
+  }
+
+  async getUserUpgradeHistory(userId: string): Promise<UpgradeAttempt[]> {
+    return Array.from(this.upgradeAttempts.values())
+      .filter(a => a.userId === userId)
+      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+  }
+
+  async createCaseOpening(openingData: Partial<CaseOpening>): Promise<CaseOpening> {
+    const id = randomUUID();
+    const opening: CaseOpening = {
+      id,
+      userId: openingData.userId || "",
+      caseId: openingData.caseId || "",
+      itemWonId: openingData.itemWonId || "",
+      serverSeed: openingData.serverSeed || "",
+      clientSeed: openingData.clientSeed || "",
+      createdAt: new Date(),
+    };
+    this.caseOpenings.set(id, opening);
+    return opening;
+  }
+
+  async getRecentCaseOpenings(limit: number = 10): Promise<CaseOpening[]> {
+    return Array.from(this.caseOpenings.values())
+      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+      .slice(0, limit);
   }
 }
 
