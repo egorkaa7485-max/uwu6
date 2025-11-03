@@ -12,6 +12,7 @@ import {
   calculateUpgradeChance,
   flipCoin,
 } from "./utils/provablyFair";
+import { generateToken } from "./utils/jwt";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   const httpServer = createServer(app);
@@ -50,14 +51,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         user = await storage.createUser({
           telegramId: String(validated.user.id),
           username: validated.user.username || `user${validated.user.id}`,
-          firstName: validated.user.first_name,
-          lastName: validated.user.last_name,
-          photoUrl: validated.user.photo_url,
+          firstName: validated.user.first_name || null,
+          lastName: validated.user.last_name || null,
+          photoUrl: validated.user.photo_url || null,
           languageCode: validated.user.language_code || "ru",
         });
       }
 
-      const token = user.id;
+      const token = generateToken({
+        userId: user.id,
+        telegramId: user.telegramId,
+      });
 
       res.json({ user, token });
     } catch (error) {
@@ -66,28 +70,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/auth/me", async (req, res) => {
-    try {
-      const userId = req.headers["x-user-id"] as string;
-      
-      if (!userId) {
-        return res.status(401).json({ error: "User ID not provided" });
-      }
-
-      const user = await storage.getUserById(userId);
-      
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-
-      res.json({ user });
-    } catch (error) {
-      console.error("Get user error:", error);
-      res.status(500).json({ error: "Failed to fetch user data" });
-    }
-  });
-
   app.use("/api", authenticateUser);
+
+  app.get("/api/auth/me", requireAuth, async (req, res) => {
+    res.json({ user: req.user });
+  });
 
   app.get("/api/user/profile", requireAuth, async (req, res) => {
     res.json({ user: req.user });
@@ -156,7 +143,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
 
     const user = await storage.getUserById(req.user.id);
-    if (!user || parseFloat(user.balance) < parseFloat(caseData.price)) {
+    if (!user || parseFloat(user.balance || "0") < parseFloat(caseData.price)) {
       return res.status(400).json({ error: "Insufficient balance" });
     }
 
@@ -172,7 +159,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(500).json({ error: "Item not found" });
     }
 
-    const balanceBefore = user.balance;
+    const balanceBefore = user.balance || "0";
     await storage.updateBalance(req.user.id, -parseFloat(caseData.price));
 
     await storage.addToInventory(req.user.id, wonItemId);
@@ -184,7 +171,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       balanceBefore,
       balanceAfter: (parseFloat(balanceBefore) - parseFloat(caseData.price)).toFixed(2),
       description: `Opened ${caseData.name}`,
-      metadata: { caseId: caseData.id, itemId: wonItemId },
+      metadata: { caseId: caseData.id, itemId: wonItemId } as any,
     });
 
     await storage.createGameHistory({
@@ -210,9 +197,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   app.post("/api/game/upgrade", requireAuth, gameLimiter, async (req, res) => {
-    const { itemId, targetItemId, clientSeed: userClientSeed } = req.body;
+    const { inventoryItemId, targetItemId, clientSeed: userClientSeed } = req.body;
 
-    const item = await storage.getItemById(itemId);
+    if (!inventoryItemId || !targetItemId) {
+      return res.status(400).json({ error: "Inventory item ID and target item ID are required" });
+    }
+
+    const inventory = await storage.getUserInventory(req.user.id);
+    const ownedItem = inventory.find(inv => inv.id === inventoryItemId && !inv.withdrawn);
+    
+    if (!ownedItem) {
+      return res.status(403).json({ error: "Item not found in inventory or already withdrawn" });
+    }
+
+    const item = await storage.getItemById(ownedItem.itemId);
     const targetItem = await storage.getItemById(targetItemId);
 
     if (!item || !targetItem) {
@@ -227,6 +225,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
     const randomValue = calculateResult(serverSeed, clientSeed, nonce);
     const success = randomValue * 100 < chance;
+
+    await storage.markInventoryItemWithdrawn(inventoryItemId);
+
+    await storage.createUpgradeAttempt({
+      userId: req.user.id,
+      sourceItemId: item.id,
+      targetItemId: targetItem.id,
+      successChance: chance.toFixed(2),
+      success,
+      resultItemId: success ? targetItem.id : null,
+    });
 
     if (success) {
       await storage.addToInventory(req.user.id, targetItemId);
@@ -269,7 +278,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
 
     const user = await storage.getUserById(req.user.id);
-    if (!user || parseFloat(user.balance) < parseFloat(betAmount)) {
+    if (!user || parseFloat(user.balance || "0") < parseFloat(betAmount)) {
       return res.status(400).json({ error: "Insufficient balance" });
     }
 
@@ -297,7 +306,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
 
     const user = await storage.getUserById(req.user.id);
-    if (!user || parseFloat(user.balance) < parseFloat(game.betAmount)) {
+    if (!user || parseFloat(user.balance || "0") < parseFloat(game.betAmount)) {
       return res.status(400).json({ error: "Insufficient balance" });
     }
 

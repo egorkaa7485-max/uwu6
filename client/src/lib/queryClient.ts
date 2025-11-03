@@ -15,12 +15,12 @@ export async function apiRequest<T = any>(
     headers?: Record<string, string>;
   }
 ): Promise<T> {
-  const userId = localStorage.getItem('userId');
+  const token = localStorage.getItem('authToken');
   const res = await fetch(url, {
     method: options?.method || 'GET',
     headers: {
       'Content-Type': 'application/json',
-      ...(userId && { 'x-user-id': userId }),
+      ...(token && { 'Authorization': `Bearer ${token}` }),
       ...options?.headers,
     },
     body: options?.body,

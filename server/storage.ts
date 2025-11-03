@@ -21,6 +21,7 @@ export interface IStorage {
   
   addToInventory(userId: string, itemId: string): Promise<Inventory>;
   getUserInventory(userId: string): Promise<Inventory[]>;
+  markInventoryItemWithdrawn(inventoryId: string): Promise<Inventory | undefined>;
   
   createTransaction(tx: Partial<Transaction>): Promise<Transaction>;
   getUserTransactions(userId: string): Promise<Transaction[]>;
@@ -144,7 +145,7 @@ export class MemStorage implements IStorage {
   async updateBalance(userId: string, amount: number): Promise<User | undefined> {
     const user = this.users.get(userId);
     if (!user) return undefined;
-    const newBalance = (parseFloat(user.balance) + amount).toFixed(2);
+    const newBalance = (parseFloat(user.balance || "0") + amount).toFixed(2);
     return this.updateUser(userId, { balance: newBalance });
   }
 
@@ -182,6 +183,14 @@ export class MemStorage implements IStorage {
     return Array.from(this.inventory.values()).filter(i => i.userId === userId);
   }
 
+  async markInventoryItemWithdrawn(inventoryId: string): Promise<Inventory | undefined> {
+    const item = this.inventory.get(inventoryId);
+    if (!item) return undefined;
+    const updated = { ...item, withdrawn: true, withdrawnAt: new Date() };
+    this.inventory.set(inventoryId, updated);
+    return updated;
+  }
+
   async createTransaction(txData: Partial<Transaction>): Promise<Transaction> {
     const id = randomUUID();
     const tx: Transaction = {
@@ -202,7 +211,7 @@ export class MemStorage implements IStorage {
   async getUserTransactions(userId: string): Promise<Transaction[]> {
     return Array.from(this.transactions.values())
       .filter(t => t.userId === userId)
-      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+      .sort((a, b) => b.createdAt!.getTime() - a.createdAt!.getTime());
   }
 
   async createGameHistory(gameData: Partial<GameHistory>): Promise<GameHistory> {
@@ -226,7 +235,7 @@ export class MemStorage implements IStorage {
   async getUserGameHistory(userId: string): Promise<GameHistory[]> {
     return Array.from(this.gameHistory.values())
       .filter(g => g.userId === userId)
-      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+      .sort((a, b) => b.createdAt!.getTime() - a.createdAt!.getTime());
   }
 
   async createCoinflipGame(gameData: Partial<CoinflipGame>): Promise<CoinflipGame> {
@@ -256,7 +265,7 @@ export class MemStorage implements IStorage {
   async getActiveCoinflipGames(): Promise<CoinflipGame[]> {
     return Array.from(this.coinflipGames.values())
       .filter(g => g.status === "waiting")
-      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+      .sort((a, b) => b.createdAt!.getTime() - a.createdAt!.getTime());
   }
 
   async updateCoinflipGame(id: string, data: Partial<CoinflipGame>): Promise<CoinflipGame | undefined> {
@@ -307,7 +316,7 @@ export class MemStorage implements IStorage {
   async getConversationMessages(conversationId: string): Promise<Message[]> {
     return Array.from(this.messages.values())
       .filter(m => m.conversationId === conversationId)
-      .sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
+      .sort((a, b) => a.createdAt!.getTime() - b.createdAt!.getTime());
   }
 
   async markMessagesAsRead(conversationId: string): Promise<void> {
@@ -337,7 +346,7 @@ export class MemStorage implements IStorage {
   async getUserUpgradeHistory(userId: string): Promise<UpgradeAttempt[]> {
     return Array.from(this.upgradeAttempts.values())
       .filter(a => a.userId === userId)
-      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+      .sort((a, b) => b.createdAt!.getTime() - a.createdAt!.getTime());
   }
 
   async createCaseOpening(openingData: Partial<CaseOpening>): Promise<CaseOpening> {
@@ -357,7 +366,7 @@ export class MemStorage implements IStorage {
 
   async getRecentCaseOpenings(limit: number = 10): Promise<CaseOpening[]> {
     return Array.from(this.caseOpenings.values())
-      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+      .sort((a, b) => b.createdAt!.getTime() - a.createdAt!.getTime())
       .slice(0, limit);
   }
 }

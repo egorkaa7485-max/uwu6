@@ -28,7 +28,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         method: 'POST',
         body: JSON.stringify({ initData }),
       });
-      localStorage.setItem('userId', response.token);
+      localStorage.setItem('authToken', response.token);
       return response;
     },
     onSuccess: () => {
@@ -36,13 +36,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
   });
 
-  const { data: userData, isLoading } = useQuery({
+  const { data: userData, isLoading } = useQuery<{ user: User }>({
     queryKey: ['/api/auth/me'],
-    enabled: isReady && !!localStorage.getItem('userId'),
+    enabled: isReady && !!localStorage.getItem('authToken'),
   });
 
   useEffect(() => {
-    if (isReady && initData && !localStorage.getItem('userId')) {
+    if (isReady && initData && !localStorage.getItem('authToken')) {
       loginMutation();
     }
   }, [isReady, initData]);

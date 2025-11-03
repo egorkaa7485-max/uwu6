@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { TelegramProvider } from "@/contexts/TelegramProvider";
 import { AuthProvider } from "@/contexts/AuthProvider";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AnimatePresence } from "framer-motion";
 import NotFound from "@/pages/not-found";
 
@@ -53,10 +54,12 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TelegramProvider>
         <AuthProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
+          <LanguageProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Router />
+            </TooltipProvider>
+          </LanguageProvider>
         </AuthProvider>
       </TelegramProvider>
     </QueryClientProvider>
