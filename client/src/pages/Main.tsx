@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-import gameCardsImg from "@assets/2025-10-28_23-31-02_1761683735553.png";
+import gameCardsImg from "/figmaAssets/game-cards.png";
 
 const bannerSlides = [
   {
@@ -259,11 +259,7 @@ export const Main = (): JSX.Element => {
                       }}
                     />
                   </div>
-                  <div className="absolute inset-0 flex items-end justify-center pb-6">
-                    <h3 className="[font-family:'Inter',Helvetica] font-extrabold text-white text-xl tracking-[-0.40px]">
-                      {game.title}
-                    </h3>
-                  </div>
+
                 </CardContent>
               </Card>
             </motion.div>
