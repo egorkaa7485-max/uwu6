@@ -22,7 +22,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const { initData, isReady } = useTelegram();
   const queryClient = useQueryClient();
 
-  const { mutateAsync: login } = useMutation({
+  const { mutateAsync: loginMutation } = useMutation({
     mutationFn: async () => {
       const response = await apiRequest<{ user: User; token: string }>('/api/auth/login', {
         method: 'POST',
@@ -36,16 +36,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
   });
 
-  const { data: userData, isLoading } = useQuery<{ user: User }>({
+  const { data: userData, isLoading } = useQuery({
     queryKey: ['/api/auth/me'],
     enabled: isReady && !!localStorage.getItem('userId'),
   });
 
   useEffect(() => {
     if (isReady && initData && !localStorage.getItem('userId')) {
-      login();
+      loginMutation();
     }
-  }, [isReady, initData, login]);
+  }, [isReady, initData]);
+
+  const login = async () => {
+    await loginMutation();
+  };
 
   const value: AuthContextType = {
     user: userData?.user || null,
