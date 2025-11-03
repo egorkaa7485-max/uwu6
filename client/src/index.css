@@ -161,6 +161,14 @@ body {
     --card-bg: 240 6% 8%;
     --card-bg-2: 240 6% 10%;
     --card-bg-3: 240 6% 13%;
+    
+    --avatar-from: 222 14% 48%;
+    --avatar-to: 222 13% 30%;
+    --divider: 0 0% 42%;
+    
+    --gradient-banner: linear-gradient(161deg, rgba(255,124,58,1) 0%, rgba(255,183,0,1) 100%);
+    --gradient-text: linear-gradient(175deg, rgba(255,255,255,1) 0%, rgba(255,177,113,1) 100%);
+    --purple-accent: 270 100% 65%;
   }
 
   .dark {
@@ -200,6 +208,14 @@ body {
     --card-bg: 240 6% 8%;
     --card-bg-2: 240 6% 10%;
     --card-bg-3: 240 6% 13%;
+    
+    --avatar-from: 222 14% 48%;
+    --avatar-to: 222 13% 30%;
+    --divider: 0 0% 42%;
+    
+    --gradient-banner: linear-gradient(161deg, rgba(255,124,58,1) 0%, rgba(255,183,0,1) 100%);
+    --gradient-text: linear-gradient(175deg, rgba(255,255,255,1) 0%, rgba(255,177,113,1) 100%);
+    --purple-accent: 270 100% 65%;
   }
 }
 

@@ -45,6 +45,14 @@ module.exports = {
         "card-bg": "hsl(var(--card-bg))",
         "card-bg-2": "hsl(var(--card-bg-2))",
         "card-bg-3": "hsl(var(--card-bg-3))",
+        "avatar-from": "hsl(var(--avatar-from))",
+        "avatar-to": "hsl(var(--avatar-to))",
+        divider: "hsl(var(--divider))",
+        "purple-accent": "hsl(var(--purple-accent))",
+      },
+      backgroundImage: {
+        "gradient-banner": "var(--gradient-banner)",
+        "gradient-text": "var(--gradient-text)",
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -83,7 +83,7 @@ export const Main = (): JSX.Element => {
   };
 
   return (
-    <div className="bg-[#0e0f12] w-full min-h-screen flex flex-col max-w-[600px] mx-auto">
+    <div className="bg-background w-full min-h-screen flex flex-col max-w-[600px] mx-auto">
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -98,8 +98,8 @@ export const Main = (): JSX.Element => {
             data-testid="button-profile"
             className="flex w-9 h-9 items-center justify-center transition-all duration-300"
           >
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300">
-              <span className="text-white text-sm font-bold">M</span>
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-avatar-from to-avatar-to flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300">
+              <span className="text-foreground text-sm font-bold">M</span>
             </div>
           </motion.button>
         </div>
@@ -110,10 +110,10 @@ export const Main = (): JSX.Element => {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <Button 
-            className="h-9 px-2.5 bg-[#c3ff00] hover:bg-[#b3ef00] rounded-3xl transition-all duration-300 hover:scale-105"
+            className="h-9 px-2.5 bg-lime hover:bg-lime/90 rounded-3xl transition-all duration-300 hover:scale-105"
             data-testid="button-connect-wallet-main"
           >
-            <span className="[font-family:'Inter',Helvetica] font-bold text-[#242424] text-xs tracking-[-0.24px]">
+            <span className="[font-family:'Inter',Helvetica] font-bold text-primary-foreground text-xs tracking-[-0.24px]">
               {t("main.connectWallet")}
             </span>
           </Button>
@@ -160,7 +160,7 @@ export const Main = (): JSX.Element => {
               onDragEnd={handleDragEnd}
               className="absolute inset-0 cursor-grab active:cursor-grabbing"
             >
-              <Card className="w-full h-full rounded-3xl overflow-hidden border-0 bg-[linear-gradient(161deg,rgba(255,124,58,1)_0%,rgba(255,183,0,1)_100%)]">
+              <Card className="w-full h-full rounded-3xl overflow-hidden border-0 bg-gradient-banner">
                 <CardContent className="relative p-0 w-full h-full">
                   <img
                     className="absolute inset-0 w-full h-full object-cover pointer-events-none"
@@ -169,15 +169,15 @@ export const Main = (): JSX.Element => {
                   />
 
                   <div className="relative z-10 p-4 pointer-events-none">
-                    <div className="[font-family:'Inter',Helvetica] font-semibold text-white text-lg tracking-[-0.36px] mt-4">
+                    <div className="[font-family:'Inter',Helvetica] font-semibold text-foreground text-lg tracking-[-0.36px] mt-4">
                       {currentSlide === 0 ? t("main.openCases") : bannerSlides[currentSlide].title}
                     </div>
 
-                    <div className="bg-[linear-gradient(175deg,rgba(255,255,255,1)_0%,rgba(255,177,113,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Inter',Helvetica] font-bold text-2xl tracking-[-0.48px] mt-1">
+                    <div className="bg-gradient-text [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Inter',Helvetica] font-bold text-2xl tracking-[-0.48px] mt-1">
                       {currentSlide === 0 ? t("main.win") : bannerSlides[currentSlide].highlight}
                     </div>
 
-                    <div className="mt-3 flex gap-1.5 items-center px-2.5 py-1.5 bg-white/10 rounded-full w-fit backdrop-blur-sm pointer-events-auto">
+                    <div className="mt-3 flex gap-1.5 items-center px-2.5 py-1.5 bg-foreground/10 rounded-full w-fit backdrop-blur-sm pointer-events-auto">
                       {bannerSlides.map((_, index) => (
                         <motion.button
                           key={index}
@@ -188,14 +188,15 @@ export const Main = (): JSX.Element => {
                           }}
                           className={`h-1 rounded-full transition-all duration-500 ease-in-out ${
                             index === currentSlide 
-                              ? "bg-white w-8" 
-                              : "bg-white/40 w-1"
+                              ? "bg-foreground w-8" 
+                              : "bg-foreground/40 w-1"
                           }`}
                           animate={{
                             width: index === currentSlide ? 32 : 4,
                             opacity: index === currentSlide ? 1 : 0.4,
                           }}
                           transition={{ duration: 0.5, ease: "easeInOut" }}
+                          data-testid={`slide-indicator-${index}`}
                         />
                       ))}
                     </div>
@@ -219,7 +220,7 @@ export const Main = (): JSX.Element => {
             alt="Games icon"
             src="/figmaAssets/fluent-games-20-filled.svg"
           />
-          <h2 className="[font-family:'Inter',Helvetica] font-bold text-white text-lg tracking-[-0.36px]">
+          <h2 className="[font-family:'Inter',Helvetica] font-bold text-foreground text-lg tracking-[-0.36px]">
             {t("main.popularGames")}
           </h2>
         </div>

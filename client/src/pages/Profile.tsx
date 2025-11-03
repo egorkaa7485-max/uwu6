@@ -29,7 +29,7 @@ export const Profile = (): JSX.Element => {
   };
 
   return (
-    <div className="bg-[#0e0f12] w-full min-h-screen flex flex-col max-w-[600px] mx-auto">
+    <div className="bg-background w-full min-h-screen flex flex-col max-w-[600px] mx-auto">
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ export const Profile = (): JSX.Element => {
           variant="ghost"
           onClick={() => setLocation("/main")}
           data-testid="button-main"
-          className="text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300 [font-family:'Inter',Helvetica] font-semibold text-sm"
+          className="text-muted-foreground hover:text-foreground hover:bg-foreground/10 transition-all duration-300 [font-family:'Inter',Helvetica] font-semibold text-sm"
         >
           ← {t("profile.main")}
         </Button>
@@ -59,9 +59,9 @@ export const Profile = (): JSX.Element => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2, type: "spring" }}
-            className="w-20 h-20 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 mb-3 flex items-center justify-center shadow-lg"
+            className="w-20 h-20 rounded-full bg-gradient-to-br from-avatar-from to-avatar-to mb-3 flex items-center justify-center shadow-lg"
           >
-            <span className="text-white text-2xl font-bold">M</span>
+            <span className="text-foreground text-2xl font-bold">M</span>
           </motion.div>
           
           <motion.div
@@ -70,12 +70,12 @@ export const Profile = (): JSX.Element => {
             transition={{ delay: 0.3 }}
             className="flex items-center gap-2"
           >
-            <h1 className="[font-family:'Inter',Helvetica] font-bold text-white text-xl tracking-[-0.40px]">
+            <h1 className="[font-family:'Inter',Helvetica] font-bold text-foreground text-xl tracking-[-0.40px]">
               Maxim
             </h1>
-            <div className="w-1 h-1 rounded-full bg-gray-500" />
-            <span className="relative [font-family:'Inter',Helvetica] text-white text-sm px-3 py-1">
-              <span className="absolute inset-0 bg-[#c3ff00]/20 rounded-full" />
+            <div className="w-1 h-1 rounded-full bg-divider" />
+            <span className="relative [font-family:'Inter',Helvetica] text-foreground text-sm px-3 py-1">
+              <span className="absolute inset-0 bg-lime/20 rounded-full" />
               <span className="relative">lvl 1</span>
             </span>
           </motion.div>
@@ -87,10 +87,10 @@ export const Profile = (): JSX.Element => {
           transition={{ delay: 0.5 }}
         >
           <Button 
-            className="w-full h-12 bg-[#c3ff00] hover:bg-[#b3ef00] rounded-3xl mb-6 transition-all duration-300 hover:scale-[1.02]"
+            className="w-full h-12 bg-lime hover:bg-lime/90 rounded-3xl mb-6 transition-all duration-300 hover:scale-[1.02]"
             data-testid="button-connect-wallet"
           >
-            <span className="[font-family:'Inter',Helvetica] font-bold text-[#242424] text-base">
+            <span className="[font-family:'Inter',Helvetica] font-bold text-primary-foreground text-base">
               {t("profile.connectWallet")}
             </span>
           </Button>
@@ -102,11 +102,11 @@ export const Profile = (): JSX.Element => {
           transition={{ delay: 0.6 }}
           className="mb-6"
         >
-          <h2 className="[font-family:'Inter',Helvetica] font-bold text-white text-lg tracking-[-0.36px] mb-3">
+          <h2 className="[font-family:'Inter',Helvetica] font-bold text-foreground text-lg tracking-[-0.36px] mb-3">
             {t("profile.yourInventory")}
           </h2>
-          <Card className="bg-[#1a1b1f] border-0 rounded-3xl p-6 min-h-[100px] flex items-center justify-center">
-            <p className="text-gray-500 [font-family:'Inter',Helvetica]">{t("profile.noItems")}</p>
+          <Card className="bg-card border-0 rounded-3xl p-6 min-h-[100px] flex items-center justify-center">
+            <p className="text-muted-foreground [font-family:'Inter',Helvetica]">{t("profile.noItems")}</p>
           </Card>
         </motion.div>
 
@@ -116,18 +116,18 @@ export const Profile = (): JSX.Element => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
           >
-            <TabsList className="grid w-full grid-cols-2 bg-[#1a1b1f] rounded-3xl p-1 mb-4">
+            <TabsList className="grid w-full grid-cols-2 bg-card rounded-3xl p-1 mb-4">
               <TabsTrigger
                 value="referral"
                 data-testid="tab-referral"
-                className="rounded-3xl data-[state=active]:bg-[#c3ff00]/20 data-[state=active]:text-white text-gray-400 [font-family:'Inter',Helvetica] font-semibold transition-all duration-300"
+                className="rounded-3xl data-[state=active]:bg-lime/20 data-[state=active]:text-foreground text-muted-foreground [font-family:'Inter',Helvetica] font-semibold transition-all duration-300"
               >
                 {t("profile.referralSystem")}
               </TabsTrigger>
               <TabsTrigger
                 value="leaderboard"
                 data-testid="tab-leaderboard"
-                className="rounded-3xl data-[state=active]:bg-[#c3ff00]/20 data-[state=active]:text-white text-gray-400 [font-family:'Inter',Helvetica] font-semibold transition-all duration-300"
+                className="rounded-3xl data-[state=active]:bg-lime/20 data-[state=active]:text-foreground text-muted-foreground [font-family:'Inter',Helvetica] font-semibold transition-all duration-300"
               >
                 {t("profile.leaderboard")}
               </TabsTrigger>
@@ -140,25 +140,25 @@ export const Profile = (): JSX.Element => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <Card className="bg-[#1a1b1f] border-0 rounded-3xl p-6 mb-4">
-                <h3 className="[font-family:'Inter',Helvetica] font-bold text-white text-base mb-4">
+              <Card className="bg-card border-0 rounded-3xl p-6 mb-4">
+                <h3 className="[font-family:'Inter',Helvetica] font-bold text-foreground text-base mb-4">
                   {t("profile.referralBalance")}
                 </h3>
                 
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div>
-                    <div className="[font-family:'Inter',Helvetica] font-bold text-white text-2xl mb-1">
+                    <div className="[font-family:'Inter',Helvetica] font-bold text-foreground text-2xl mb-1">
                       0
                     </div>
-                    <div className="[font-family:'Inter',Helvetica] text-gray-400 text-sm">
+                    <div className="[font-family:'Inter',Helvetica] text-muted-foreground text-sm">
                       ~ $0
                     </div>
                   </div>
                   <div>
-                    <div className="[font-family:'Inter',Helvetica] font-bold text-white text-2xl mb-1">
+                    <div className="[font-family:'Inter',Helvetica] font-bold text-foreground text-2xl mb-1">
                       0
                     </div>
-                    <div className="[font-family:'Inter',Helvetica] text-gray-400 text-sm">
+                    <div className="[font-family:'Inter',Helvetica] text-muted-foreground text-sm">
                       {t("profile.invited")}
                     </div>
                   </div>
@@ -168,7 +168,7 @@ export const Profile = (): JSX.Element => {
                   <Button
                     onClick={handleCopyLink}
                     data-testid="button-copy-link"
-                    className="bg-[#242424] hover:bg-[#333] text-white rounded-2xl h-11 transition-all duration-300 hover:scale-[1.02]"
+                    className="bg-secondary hover:bg-secondary/80 text-foreground rounded-2xl h-11 transition-all duration-300 hover:scale-[1.02]"
                   >
                     <Copy className="w-4 h-4 mr-2" />
                     <span className="[font-family:'Inter',Helvetica] font-semibold text-sm">
@@ -177,7 +177,7 @@ export const Profile = (): JSX.Element => {
                   </Button>
                   <Button
                     data-testid="button-withdraw"
-                    className="bg-[#c3ff00] hover:bg-[#b3ef00] text-[#242424] rounded-2xl h-11 transition-all duration-300 hover:scale-[1.02]"
+                    className="bg-lime hover:bg-lime/90 text-primary-foreground rounded-2xl h-11 transition-all duration-300 hover:scale-[1.02]"
                   >
                     <Send className="w-4 h-4 mr-2" />
                     <span className="[font-family:'Inter',Helvetica] font-semibold text-sm">
@@ -195,23 +195,24 @@ export const Profile = (): JSX.Element => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <Card className="bg-[#1a1b1f] border-0 rounded-3xl p-4">
+              <Card className="bg-card border-0 rounded-3xl p-4">
                 {leaderboardData.map((user, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center gap-3 p-3 hover:bg-white/5 rounded-2xl transition-all duration-300 mb-2 last:mb-0"
+                    className="flex items-center gap-3 p-3 hover:bg-foreground/5 rounded-2xl transition-all duration-300 mb-2 last:mb-0"
+                    data-testid={`leaderboard-entry-${index}`}
                   >
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center flex-shrink-0">
-                      <span className="text-white text-xs font-bold">{index + 1}</span>
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-avatar-from to-avatar-to flex items-center justify-center flex-shrink-0">
+                      <span className="text-foreground text-xs font-bold">{index + 1}</span>
                     </div>
                     <div className="flex-1">
-                      <div className="[font-family:'Inter',Helvetica] font-semibold text-white text-sm">
+                      <div className="[font-family:'Inter',Helvetica] font-semibold text-foreground text-sm">
                         {user.name}
                       </div>
-                      <div className="[font-family:'Inter',Helvetica] text-gray-400 text-xs">
+                      <div className="[font-family:'Inter',Helvetica] text-muted-foreground text-xs">
                         {user.points}
                       </div>
                     </div>
