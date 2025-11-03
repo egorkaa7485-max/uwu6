@@ -39,6 +39,13 @@
 8. ✅ Игра "PvP Монетка" с лобби
 9. ✅ Чат поддержки (WebSocket)
 10. ✅ Защита бэкенда (rate limiting, provably fair)
+11. ✅ **Figma Design System Integration** - обновлена цветовая схема по Figma:
+    - Primary: #C4FF00 (lime green)
+    - Background: #0F0F12 (dark)
+    - Card backgrounds: #15151A, #19191E, #1F1F27
+    - Обновлены CSS variables и Tailwind config
+12. ✅ **Header Component** - обновлён дизайн с аватаром, балансом и data-testid
+13. ✅ **Bottom Navigation** - обновлена с lime green (#C4FF00) активными состояниями
 
 ## API Endpoints
 **Авторизация:**
