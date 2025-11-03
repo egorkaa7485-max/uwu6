@@ -23,11 +23,71 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   app.use("/api", apiLimiter);
-  app.use("/api", authenticateUser);
 
   app.post("/api/auth/login", async (req, res) => {
-    res.json({ user: req.user });
+    try {
+      const { initData } = req.body;
+      
+      if (!initData) {
+        return res.status(400).json({ error: "initData is required" });
+      }
+
+      const botToken = process.env.TELEGRAM_BOT_TOKEN;
+      if (!botToken) {
+        return res.status(500).json({ error: "Bot token not configured" });
+      }
+
+      const { validateTelegramInitData } = await import("./utils/telegramAuth");
+      const validated = validateTelegramInitData(initData, botToken);
+      
+      if (!validated || !validated.user) {
+        return res.status(401).json({ error: "Invalid Telegram authentication data" });
+      }
+
+      let user = await storage.getUserByTelegramId(String(validated.user.id));
+      
+      if (!user) {
+        user = await storage.createUser({
+          telegramId: String(validated.user.id),
+          username: validated.user.username || `user${validated.user.id}`,
+          firstName: validated.user.first_name,
+          lastName: validated.user.last_name,
+          photoUrl: validated.user.photo_url,
+          languageCode: validated.user.language_code || "ru",
+        });
+      }
+
+      const token = user.id;
+
+      res.json({ user, token });
+    } catch (error) {
+      console.error("Login error:", error);
+      res.status(500).json({ error: "Authentication failed" });
+    }
   });
+
+  app.get("/api/auth/me", async (req, res) => {
+    try {
+      const userId = req.headers["x-user-id"] as string;
+      
+      if (!userId) {
+        return res.status(401).json({ error: "User ID not provided" });
+      }
+
+      const user = await storage.getUserById(userId);
+      
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      res.json({ user });
+    } catch (error) {
+      console.error("Get user error:", error);
+      res.status(500).json({ error: "Failed to fetch user data" });
+    }
+  });
+
+  app.use("/api", authenticateUser);
 
   app.get("/api/user/profile", requireAuth, async (req, res) => {
     res.json({ user: req.user });
