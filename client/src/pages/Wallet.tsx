@@ -13,6 +13,7 @@ export default function Wallet() {
   const { data: transactions } = useTransactions();
   const deposit = useDeposit();
   const [amount, setAmount] = useState("100");
+  const [tonConnected, setTonConnected] = useState(false);
 
   const handleDeposit = () => {
     deposit.mutate(parseFloat(amount), {
@@ -24,10 +25,10 @@ export default function Wallet() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white pb-20">
+    <div className="wallet min-h-screen bg-zinc-950 text-white pb-20">
       <Header title="Кошелёк" />
       
-      <div className="p-4 max-w-md mx-auto space-y-4">
+      <div className="wallet__container p-4 max-w-md mx-auto space-y-4">
         <Card className="bg-gradient-to-br from-lime-500/20 to-green-500/20 border-lime-500/50 p-6">
           <div className="flex items-center gap-3 mb-4">
             <Coins className="w-8 h-8 text-lime-500" />
@@ -38,7 +39,7 @@ export default function Wallet() {
           </div>
         </Card>
 
-        <Card className="bg-zinc-900 border-zinc-800 p-4">
+        <Card className="wallet__deposit bg-zinc-900 border-zinc-800 p-4">
           <h3 className="font-semibold mb-3">Пополнить баланс</h3>
           <div className="flex gap-2 mb-3">
             {["100", "500", "1000"].map((preset) => (
@@ -69,7 +70,40 @@ export default function Wallet() {
           </Button>
         </Card>
 
-        <div>
+        <Card className="wallet__methods bg-zinc-900 border-zinc-800 p-4 space-y-3">
+          <h3 className="font-semibold">Способы пополнения</h3>
+          <Button
+            variant="outline"
+            className="w-full justify-start"
+            onClick={() => window.open("https://t.me/", "_blank")}
+          >
+            Telegram Stars (инструкция)
+          </Button>
+          <Button
+            variant="outline"
+            className="w-full justify-start"
+            onClick={() => window.open("https://t.me/", "_blank")}
+          >
+            Отправить подарок боту (диалог)
+          </Button>
+          <div className="flex items-center gap-2">
+            <Button
+              className="flex-1"
+              variant={tonConnected ? "default" : "secondary"}
+              onClick={() => setTonConnected((v) => !v)}
+            >
+              {tonConnected ? "TON Connected" : "TON Connect (placeholder)"}
+            </Button>
+            <Button
+              disabled={!tonConnected}
+              onClick={() => handleDeposit()}
+            >
+              Пополнить TON (demo)
+            </Button>
+          </div>
+        </Card>
+
+        <div className="wallet__history">
           <h3 className="font-semibold mb-3">История транзакций</h3>
           <div className="space-y-2">
             {transactions?.slice(0, 10).map((tx: any) => (

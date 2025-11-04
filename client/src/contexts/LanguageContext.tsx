@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { useTelegram } from "./TelegramProvider";
 
 type Language = "en" | "ru" | "fa" | "zh";
 
@@ -118,6 +119,7 @@ const translations: Record<Language, Record<string, string>> = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
+  const { user } = useTelegram();
   const [language, setLanguageState] = useState<Language>(() => {
     const saved = localStorage.getItem("selectedLanguage") as Language;
     return saved || "en";
@@ -131,6 +133,14 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const t = (key: string): string => {
     return translations[language][key] || key;
   };
+
+  useEffect(() => {
+    const saved = localStorage.getItem("selectedLanguage") as Language | null;
+    if (!saved && user?.language_code) {
+      const langCode = user.language_code.startsWith("ru") ? "ru" : user.language_code.startsWith("zh") ? "zh" : user.language_code.startsWith("fa") ? "fa" : "en";
+      setLanguage(langCode as Language);
+    }
+  }, [user?.language_code]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>

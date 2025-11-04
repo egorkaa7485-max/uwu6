@@ -6,26 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Coins, Gift, Star, Trophy, Crown, Gem, Sparkles } from "lucide-react";
 
 const onboardingScreens = [
-  {
-    id: 1,
-    type: "welcome" as const,
-  },
-  {
-    id: 2,
-    type: "popular-games" as const,
-  },
-  {
-    id: 3,
-    type: "leaderboard" as const,
-  },
-  {
-    id: 4,
-    type: "wallet-cards" as const,
-  },
-  {
-    id: 5,
-    type: "deposit" as const,
-  },
+  { id: 1, type: "welcome" as const, image: "/свг/onboarding.svg" },
+  { id: 2, type: "popular-games" as const, image: "/свг/onboarding (1).svg" },
+  { id: 3, type: "leaderboard" as const, image: "/свг/onboarding (2).svg" },
+  { id: 4, type: "wallet-cards" as const, image: "/свг/onboarding (3).svg" },
+  { id: 5, type: "deposit" as const, image: "/figmaAssets/group-5.png" },
 ];
 
 export const Onboarding = (): JSX.Element => {
@@ -65,7 +50,7 @@ export const Onboarding = (): JSX.Element => {
   const screen = onboardingScreens[currentScreen];
 
   return (
-    <div className="bg-[#0e0f12] w-full min-h-screen flex flex-col max-w-[600px] mx-auto relative overflow-hidden">
+    <div className="onboarding bg-[#0e0f12] w-full min-h-screen flex flex-col max-w-[600px] mx-auto relative overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentScreen}
@@ -73,48 +58,25 @@ export const Onboarding = (): JSX.Element => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="flex-1 flex flex-col relative"
+          className="onboarding__slide flex-1 flex flex-col relative"
         >
           {/* Screen 1: Welcome - PLINKO / CRASH / UPGRADE */}
           {screen.type === "welcome" && (
-            <div className="flex-1 flex flex-col items-center justify-center px-8 pb-32">
-              <motion.div
+            <div className="onboarding__center flex-1 flex flex-col items-center justify-center px-8 pb-32">
+              <motion.img
+                src={onboardingScreens[0].image}
+                alt="welcome"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="w-full text-center space-y-4"
-              >
-                <motion.h1 
-                  className="font-black text-white text-[64px] leading-tight tracking-tight"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3, duration: 0.5 }}
-                >
-                  PLINKO
-                </motion.h1>
-                <motion.h1 
-                  className="font-black text-white text-[64px] leading-tight tracking-tight"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                >
-                  CRASH
-                </motion.h1>
-                <motion.h1 
-                  className="font-black text-white text-[64px] leading-tight tracking-tight opacity-30"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 0.3, scale: 1 }}
-                  transition={{ delay: 0.7, duration: 0.5 }}
-                >
-                  UPGRADE
-                </motion.h1>
-              </motion.div>
+                className="onboarding__image w-full max-w-sm"
+              />
             </div>
           )}
 
           {/* Screen 2: Popular games */}
           {screen.type === "popular-games" && (
-            <div className="flex-1 flex flex-col px-6 pt-16 pb-32">
+            <div className="onboarding__popular flex-1 flex flex-col px-6 pt-16 pb-32">
               <motion.h2
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -123,7 +85,7 @@ export const Onboarding = (): JSX.Element => {
               >
                 Popular games
               </motion.h2>
-              <div className="space-y-4">
+              <div className="onboarding__list space-y-4">
                 {[1, 2, 3, 4, 5].map((num, index) => (
                   <motion.div
                     key={num}
@@ -133,9 +95,7 @@ export const Onboarding = (): JSX.Element => {
                   >
                     <Card className="bg-gradient-to-r from-[#1c1d21] to-[#18191c] border border-gray-800/30 rounded-2xl shadow-lg">
                       <CardContent className="p-5 flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FFD700] to-[#FFA500] flex items-center justify-center shadow-lg flex-shrink-0">
-                          <span className="text-black font-black text-lg">{num}</span>
-                        </div>
+                        <img src={onboardingScreens[1].image} alt="popular" className="w-12 h-12 rounded-full flex-shrink-0" />
                         <div className="flex-1">
                           <p className="text-white font-bold text-lg">Maxim</p>
                           <p className="text-gray-400 text-sm">330 000 points</p>
@@ -151,7 +111,7 @@ export const Onboarding = (): JSX.Element => {
 
           {/* Screen 3: Leaderboard */}
           {screen.type === "leaderboard" && (
-            <div className="flex-1 flex flex-col items-center justify-center px-6 pb-32">
+            <div className="onboarding__leaderboard flex-1 flex flex-col items-center justify-center px-6 pb-32">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -162,7 +122,7 @@ export const Onboarding = (): JSX.Element => {
                   Leaderboard
                 </h2>
                 
-                <div className="space-y-5">
+                <div className="onboarding__ranks space-y-5">
                   {/* GOLD MEMBER */}
                   <motion.div
                     initial={{ x: -50, opacity: 0 }}
@@ -170,12 +130,7 @@ export const Onboarding = (): JSX.Element => {
                     transition={{ delay: 0.3, duration: 0.5 }}
                     className="bg-gradient-to-r from-[#FFD700]/10 via-[#FFA500]/10 to-[#FFD700]/10 border-2 border-[#FFD700] rounded-3xl p-6 backdrop-blur-sm"
                   >
-                    <div className="flex items-center justify-center gap-3">
-                      <Crown className="w-7 h-7 text-[#FFD700]" />
-                      <span className="font-black text-[22px] text-[#FFD700] tracking-wider">
-                        GOLD MEMBER
-                      </span>
-                    </div>
+                    <img src={onboardingScreens[2].image} alt="gold" className="mx-auto h-10" />
                   </motion.div>
 
                   {/* DIAMOND MEMBER */}
@@ -185,12 +140,7 @@ export const Onboarding = (): JSX.Element => {
                     transition={{ delay: 0.5, duration: 0.5 }}
                     className="bg-gradient-to-r from-[#00BFFF]/10 via-[#1E90FF]/10 to-[#00BFFF]/10 border-2 border-[#00BFFF] rounded-3xl p-6 backdrop-blur-sm"
                   >
-                    <div className="flex items-center justify-center gap-3">
-                      <Gem className="w-7 h-7 text-[#00BFFF]" />
-                      <span className="font-black text-[22px] text-[#00BFFF] tracking-wider">
-                        DIAMOND MEMBER
-                      </span>
-                    </div>
+                    <img src={onboardingScreens[2].image} alt="diamond" className="mx-auto h-10 opacity-80" />
                   </motion.div>
 
                   {/* BRILLIANCE MEMBER */}
@@ -200,12 +150,7 @@ export const Onboarding = (): JSX.Element => {
                     transition={{ delay: 0.7, duration: 0.5 }}
                     className="bg-gradient-to-r from-[#c3ff00]/10 via-[#a0d600]/10 to-[#c3ff00]/10 border-2 border-[#c3ff00] rounded-3xl p-6 backdrop-blur-sm"
                   >
-                    <div className="flex items-center justify-center gap-3">
-                      <Sparkles className="w-7 h-7 text-[#c3ff00]" />
-                      <span className="font-black text-[22px] text-[#c3ff00] tracking-wider">
-                        BRILLIANCE MEMBER
-                      </span>
-                    </div>
+                    <img src={onboardingScreens[2].image} alt="brilliance" className="mx-auto h-10 opacity-60" />
                   </motion.div>
                 </div>
               </motion.div>
@@ -214,7 +159,7 @@ export const Onboarding = (): JSX.Element => {
 
           {/* Screen 4: Wallet cards */}
           {screen.type === "wallet-cards" && (
-            <div className="flex-1 flex flex-col px-6 pt-16 pb-32">
+            <div className="onboarding__wallet flex-1 flex flex-col px-6 pt-16 pb-32">
               <motion.h2
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -223,7 +168,7 @@ export const Onboarding = (): JSX.Element => {
               >
                 Wallet cards
               </motion.h2>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="onboarding__cards grid grid-cols-2 gap-4">
                 {/* TON Card */}
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
@@ -238,7 +183,7 @@ export const Onboarding = (): JSX.Element => {
                     }}
                   >
                     <CardContent className="p-0 flex flex-col items-center justify-center h-full gap-3">
-                      <Coins className="w-14 h-14 text-white" strokeWidth={2} />
+                      <img src={onboardingScreens[3].image} alt="ton" className="w-14 h-14" />
                       <p className="text-white font-bold text-lg">TON</p>
                     </CardContent>
                   </Card>
@@ -258,7 +203,7 @@ export const Onboarding = (): JSX.Element => {
                     }}
                   >
                     <CardContent className="p-0 flex flex-col items-center justify-center h-full gap-3">
-                      <Gift className="w-14 h-14 text-white" strokeWidth={2} />
+                      <img src={onboardingScreens[3].image} alt="gifts" className="w-14 h-14" />
                       <p className="text-white font-bold text-lg">Gifts</p>
                     </CardContent>
                   </Card>
@@ -279,7 +224,7 @@ export const Onboarding = (): JSX.Element => {
                     }}
                   >
                     <CardContent className="p-0 flex flex-col items-center justify-center h-full gap-3">
-                      <Star className="w-14 h-14 text-white" strokeWidth={2} fill="white" />
+                      <img src={onboardingScreens[4].image} alt="stars" className="w-14 h-14" />
                       <p className="text-white font-bold text-lg">Stars</p>
                     </CardContent>
                   </Card>
@@ -290,12 +235,12 @@ export const Onboarding = (): JSX.Element => {
 
           {/* Screen 5: Deposit */}
           {screen.type === "deposit" && (
-            <div className="flex-1 flex flex-col items-center justify-center px-6 pb-32">
+            <div className="onboarding__deposit flex-1 flex flex-col items-center justify-center px-6 pb-32">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="text-center space-y-10"
+                className="onboarding__cta text-center space-y-10"
               >
                 <h2 className="font-black text-white text-[40px] leading-tight px-4">
                   Deposit in any methods
@@ -326,10 +271,10 @@ export const Onboarding = (): JSX.Element => {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.4 }}
-        className="fixed bottom-0 left-0 right-0 bg-[#0e0f12]/95 backdrop-blur-xl border-t border-gray-800/50 p-6 max-w-[600px] mx-auto"
+        className="onboarding__nav fixed bottom-0 left-0 right-0 bg-[#0e0f12]/95 backdrop-blur-xl border-t border-gray-800/50 p-6 max-w-[600px] mx-auto"
       >
         {/* Progress Indicators */}
-        <div className="flex gap-2 mb-5 justify-center">
+        <div className="onboarding__progress flex gap-2 mb-5 justify-center">
           {onboardingScreens.map((_, index) => (
             <div
               key={index}
@@ -341,7 +286,7 @@ export const Onboarding = (): JSX.Element => {
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-3">
+        <div className="onboarding__buttons flex gap-3">
           <Button
             onClick={handleSkip}
             variant="outline"

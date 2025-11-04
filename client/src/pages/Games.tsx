@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { useLocation } from "wouter";
+import { useBalance } from "@/hooks/useUser";
+import { toast } from "@/hooks/use-toast";
 import { Header } from "@/components/Header";
 import { BottomNav } from "@/components/BottomNav";
 import { Card } from "@/components/ui/card";
@@ -7,6 +9,7 @@ import { TrendingUp, Coins } from "lucide-react";
 
 export default function Games() {
   const [, setLocation] = useLocation();
+  const { data: balance } = useBalance();
 
   const games = [
     {
@@ -41,7 +44,15 @@ export default function Games() {
           >
             <Card
               className="bg-zinc-900 border-zinc-800 p-6 cursor-pointer hover:border-lime-500 transition-colors"
-              onClick={() => setLocation(game.path)}
+              onClick={() => {
+                const current = parseFloat(balance || "0");
+                if (!current || current <= 0) {
+                  toast.warning("Недостаточно средств. Пополните баланс в кошельке.");
+                  setLocation("/wallet");
+                  return;
+                }
+                setLocation(game.path);
+              }}
             >
               <div className="flex items-center gap-4">
                 <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${game.gradient} flex items-center justify-center text-3xl`}>

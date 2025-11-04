@@ -29,7 +29,7 @@ export const Profile = (): JSX.Element => {
   };
 
   return (
-    <div className="bg-background w-full min-h-screen flex flex-col max-w-[600px] mx-auto">
+    <div className="profile bg-background w-full min-h-screen flex flex-col max-w-[600px] mx-auto">
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -52,14 +52,14 @@ export const Profile = (): JSX.Element => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="px-4 mb-6"
+        className="profile__container px-4 mb-6"
       >
-        <div className="flex flex-col items-center mb-6">
+        <div className="profile__header flex flex-col items-center mb-6">
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2, type: "spring" }}
-            className="w-20 h-20 rounded-full bg-gradient-to-br from-avatar-from to-avatar-to mb-3 flex items-center justify-center shadow-lg"
+            className="profile__avatar w-20 h-20 rounded-full bg-gradient-to-br from-avatar-from to-avatar-to mb-3 flex items-center justify-center shadow-lg"
           >
             <span className="text-foreground text-2xl font-bold">M</span>
           </motion.div>
@@ -68,7 +68,7 @@ export const Profile = (): JSX.Element => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="flex items-center gap-2"
+            className="profile__name flex items-center gap-2"
           >
             <h1 className="[font-family:'Inter',Helvetica] font-bold text-foreground text-xl tracking-[-0.40px]">
               Maxim
@@ -87,11 +87,21 @@ export const Profile = (): JSX.Element => {
           transition={{ delay: 0.5 }}
         >
           <Button 
-            className="w-full h-12 bg-lime hover:bg-lime/90 rounded-3xl mb-6 transition-all duration-300 hover:scale-[1.02]"
+            className="profile__connect w-full h-12 bg-lime hover:bg-lime/90 rounded-3xl mb-6 transition-all duration-300 hover:scale-[1.02]"
             data-testid="button-connect-wallet"
           >
             <span className="[font-family:'Inter',Helvetica] font-bold text-primary-foreground text-base">
               {t("profile.connectWallet")}
+            </span>
+          </Button>
+
+          <Button
+            className="w-full h-12 bg-zinc-800 hover:bg-zinc-700 rounded-3xl mb-6 transition-all duration-300 hover:scale-[1.02]"
+            onClick={() => setLocation("/support")}
+            data-testid="button-support"
+          >
+            <span className="[font-family:'Inter',Helvetica] font-semibold text-white text-base">
+              Связаться с поддержкой
             </span>
           </Button>
         </motion.div>
@@ -105,7 +115,7 @@ export const Profile = (): JSX.Element => {
           <h2 className="[font-family:'Inter',Helvetica] font-bold text-foreground text-lg tracking-[-0.36px] mb-3">
             {t("profile.yourInventory")}
           </h2>
-          <Card className="bg-card border-0 rounded-3xl p-6 min-h-[100px] flex items-center justify-center">
+          <Card className="profile__inventory bg-card border-0 rounded-3xl p-6 min-h-[100px] flex items-center justify-center">
             <p className="text-muted-foreground [font-family:'Inter',Helvetica]">{t("profile.noItems")}</p>
           </Card>
         </motion.div>

@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@font-face{
+    font-family: 'SF Pro Rounded', sans-serif;
+    src: url('assets/fonts/sfprorounded.woff2') format('woff2'),
+         url('assets/fonts/sfprorounded.woff') format('woff'),
+         url('assets/fonts/sfprorounded.ttf') format('truetype'),
+         url('assets/fonts/sfprorounded.otf') format('opentype'),
+         url('assets/fonts/sfprorounded.eot') format('embedded-opentype'),
+         url('assets/fonts/sfprorounded.svg#SF Pro Rounded') format('svg');
+
+
+    font-family: 'SF Pro', sans-serif;
+    src: url('assets/fonts/sfpro.woff2') format('woff2'),
+         url('assets/fonts/sfpro.woff') format('woff'),
+         url('assets/fonts/sfpro.ttf') format('truetype'),
+         url('assets/fonts/sfpro.otf') format('opentype'),
+         url('assets/fonts/sfpro.eot') format('embedded-opentype'),
+         url('assets/fonts/sfpro.svg#SF Pro') format('svg');
+
+}

@@ -19,7 +19,10 @@ api.interceptors.request.use((config) => {
 });
 
 export const authAPI = {
-  login: () => api.post("/auth/login"),
+  login: () => {
+    const initData = getTelegramInitData();
+    return api.post("/auth/login", { initData });
+  },
 };
 
 export const userAPI = {

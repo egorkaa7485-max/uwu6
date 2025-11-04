@@ -83,7 +83,7 @@ export const Main = (): JSX.Element => {
   };
 
   return (
-    <div className="bg-background w-full min-h-screen flex flex-col max-w-[600px] mx-auto">
+    <div className="main bg-background w-full min-h-screen flex flex-col max-w-[600px] mx-auto">
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -124,7 +124,7 @@ export const Main = (): JSX.Element => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="px-4 mb-6 relative"
+        className="main-banner px-4 mb-6 relative"
       >
         <div className="relative w-full h-[145px] rounded-3xl overflow-hidden">
           <AnimatePresence initial={false} custom={direction}>
@@ -158,12 +158,12 @@ export const Main = (): JSX.Element => {
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={1}
               onDragEnd={handleDragEnd}
-              className="absolute inset-0 cursor-grab active:cursor-grabbing"
+              className="main-banner__slide absolute inset-0 cursor-grab active:cursor-grabbing"
             >
-              <Card className="w-full h-full rounded-3xl overflow-hidden border-0 bg-gradient-banner">
-                <CardContent className="relative p-0 w-full h-full">
+              <Card className="main-banner__card w-full h-full rounded-3xl overflow-hidden border-0 bg-gradient-banner">
+                <CardContent className="main-banner__content relative p-0 w-full h-full">
                   <img
-                    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                    className="main-banner__bg absolute inset-0 w-full h-full object-cover pointer-events-none"
                     alt="Hero background"
                     src={bannerSlides[currentSlide].bgImage}
                   />
@@ -173,7 +173,7 @@ export const Main = (): JSX.Element => {
                       {currentSlide === 0 ? t("main.openCases") : bannerSlides[currentSlide].title}
                     </div>
 
-                    <div className="bg-gradient-text [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Inter',Helvetica] font-bold text-2xl tracking-[-0.48px] mt-1">
+                    <div className="main-banner__highlight bg-gradient-text [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] [font-family:'Inter',Helvetica] font-bold text-2xl tracking-[-0.48px] mt-1">
                       {currentSlide === 0 ? t("main.win") : bannerSlides[currentSlide].highlight}
                     </div>
 
@@ -186,7 +186,7 @@ export const Main = (): JSX.Element => {
                             setCurrentSlide(index);
                             setPage([index, newDirection]);
                           }}
-                          className={`h-1 rounded-full transition-all duration-500 ease-in-out ${
+                          className={`main-banner__dot h-1 rounded-full transition-all duration-500 ease-in-out ${
                             index === currentSlide 
                               ? "bg-foreground w-8" 
                               : "bg-foreground/40 w-1"

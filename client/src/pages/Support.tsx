@@ -22,38 +22,38 @@ export default function Support() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white flex flex-col">
+    <div className="support min-h-screen bg-zinc-950 text-white flex flex-col">
       <Header title="Поддержка" />
       
-      <div className="p-4 max-w-md mx-auto w-full">
+      <div className="support__topbar p-4 max-w-md mx-auto w-full">
         <Button
           variant="ghost"
           size="sm"
           onClick={() => setLocation("/profile")}
-          className="mb-4"
+          className="support__back mb-4"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Назад
         </Button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 max-w-md mx-auto w-full space-y-3">
+      <div className="support__messages flex-1 overflow-y-auto p-4 max-w-md mx-auto w-full space-y-3">
         {!isConnected && (
-          <div className="text-center text-zinc-400 py-4">Подключение...</div>
+          <div className="support__status text-center text-zinc-400 py-4">Подключение...</div>
         )}
         
         {messages.map((msg: any) => (
           <div
             key={msg.id}
-            className={`flex ${msg.senderType === "user" ? "justify-end" : "justify-start"}`}
+            className={`support__row flex ${msg.senderType === "user" ? "justify-end" : "justify-start"}`}
           >
-            <Card className={`max-w-[80%] p-3 ${
+            <Card className={`support__bubble max-w-[80%] p-3 ${
               msg.senderType === "user"
                 ? "bg-lime-500 text-black"
                 : "bg-zinc-800 border-zinc-700"
             }`}>
-              <p>{msg.text}</p>
-              <p className="text-xs mt-1 opacity-70">
+              <p className="support__text leading-snug">{msg.text}</p>
+              <p className="support__time text-xs mt-1 opacity-70">
                 {new Date(msg.createdAt).toLocaleTimeString("ru-RU", {
                   hour: "2-digit",
                   minute: "2-digit",
@@ -64,7 +64,7 @@ export default function Support() {
         ))}
         
         {isTyping && (
-          <div className="flex justify-start">
+          <div className="support__typing flex justify-start">
             <Card className="bg-zinc-800 border-zinc-700 p-3">
               <p className="text-zinc-400">Печатает...</p>
             </Card>
@@ -72,8 +72,8 @@ export default function Support() {
         )}
       </div>
 
-      <div className="p-4 border-t border-zinc-800 max-w-md mx-auto w-full">
-        <div className="flex gap-2">
+      <div className="support__composer p-4 border-t border-zinc-800 max-w-md mx-auto w-full">
+        <div className="support__composer-inner flex gap-2">
           <Input
             value={message}
             onChange={(e) => setMessage(e.target.value)}

@@ -6,6 +6,24 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Basic security headers (lightweight alternative to helmet without extra deps)
+app.use((_, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader("X-XSS-Protection", "1; mode=block");
+  res.setHeader(
+    "Content-Security-Policy",
+    [
+      "default-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' https://telegram.org https://*.telegram.org https://*.t.me",
+      "img-src 'self' data: blob: https:",
+      "media-src 'self' data: blob: https:",
+      "connect-src 'self' https: ws: wss:",
+      "frame-ancestors 'self' https://web.telegram.org https://*.t.me",
+    ].join("; ")
+  );
+  next();
+});
+
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;

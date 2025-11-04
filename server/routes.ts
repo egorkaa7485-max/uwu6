@@ -27,7 +27,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/auth/login", async (req, res) => {
     try {
-      const { initData } = req.body;
+      // Accept initData from body or from x-telegram-init-data header for flexibility
+      const initDataFromBody = (req.body && (req.body as any).initData) || "";
+      const initDataFromHeader = (req.headers["x-telegram-init-data"] as string) || "";
+      const initData = initDataFromBody || initDataFromHeader;
       
       if (!initData) {
         return res.status(400).json({ error: "initData is required" });
@@ -102,6 +105,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
       balanceBefore,
       balanceAfter: updatedUser?.balance || balanceBefore,
       description: "Balance deposit",
+    });
+
+    res.json({ balance: updatedUser?.balance, success: true });
+  });
+
+  // Placeholder endpoint to simulate Telegram Gift deposit
+  app.post("/api/user/deposit/gift", requireAuth, depositLimiter, async (req, res) => {
+    const { amount } = req.body;
+    if (!amount || parseFloat(amount) <= 0) {
+      return res.status(400).json({ error: "Invalid amount" });
+    }
+
+    const balanceBefore = req.user.balance;
+    const updatedUser = await storage.updateBalance(req.user.id, parseFloat(amount));
+
+    await storage.createTransaction({
+      userId: req.user.id,
+      type: "deposit",
+      amount,
+      balanceBefore,
+      balanceAfter: updatedUser?.balance || balanceBefore,
+      description: "Gift deposit (placeholder)",
+      metadata: { source: "telegram_gift_placeholder" } as any,
     });
 
     res.json({ balance: updatedUser?.balance, success: true });

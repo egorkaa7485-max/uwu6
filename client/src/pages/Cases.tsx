@@ -17,14 +17,14 @@ export default function Cases() {
   });
 
   return (
-    <div className="min-h-screen bg-background text-foreground pb-20">
+    <div className="cases min-h-screen bg-background text-foreground pb-20">
       <Header title="Кейсы" />
       
-      <div className="p-4 max-w-md mx-auto">
+      <div className="cases__container p-4 max-w-md mx-auto">
         {isLoading ? (
-          <div className="text-center py-12 text-muted-foreground">Загрузка...</div>
+          <div className="cases__loading text-center py-12 text-muted-foreground">Загрузка...</div>
         ) : (
-          <div className="grid grid-cols-2 gap-3">
+          <div className="cases__grid grid grid-cols-2 gap-3">
             {data?.map((caseItem: any, index: number) => (
               <motion.div
                 key={caseItem.id}
@@ -33,19 +33,22 @@ export default function Cases() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Card
-                  className="bg-card border-border cursor-pointer hover:border-lime transition-colors overflow-hidden"
+                  className="cases__card bg-card border-border cursor-pointer hover:border-lime transition-colors overflow-hidden"
                   onClick={() => setLocation(`/cases/${caseItem.id}`)}
                   data-testid={`card-case-${caseItem.id}`}
                 >
-                  <div className="aspect-square bg-gradient-to-br from-lime/20 to-purple-accent/20 relative">
-                    <div className="absolute inset-0 flex items-center justify-center text-4xl">
-                      📦
-                    </div>
+                  <div className="cases__media aspect-square relative">
+                    <img
+                      className="cases__image absolute inset-0 w-full h-full object-cover"
+                      alt={caseItem.name}
+                      src="/figmaAssets/mask-group-1.png"
+                    />
+                    <div className="cases__overlay absolute inset-0 bg-gradient-to-br from-black/0 to-black/40" />
                   </div>
-                  <div className="p-3">
-                    <h3 className="font-semibold text-sm mb-1">{caseItem.name}</h3>
-                    <div className="flex items-center justify-between">
-                      <span className="text-lime font-bold">{caseItem.price} ⭐</span>
+                  <div className="cases__info p-3">
+                    <h3 className="cases__title font-semibold text-sm mb-1">{caseItem.name}</h3>
+                    <div className="cases__meta flex items-center justify-between">
+                      <span className="cases__price text-lime font-bold">{caseItem.price} ⭐</span>
                     </div>
                   </div>
                 </Card>

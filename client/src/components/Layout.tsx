@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { Home, Gamepad2, User, Wallet } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthProvider';
@@ -23,6 +23,9 @@ export function Layout({ children, showTabBar = true, showHeader = true }: Layou
 
   return (
     <div className="bg-[#0e0f12] min-h-screen flex flex-col max-w-[600px] mx-auto relative">
+      {/* Anti-copy protection (best-effort) */}
+      {/** Note: This is client-side only and not a true DRM. */}
+      <AntiCopyGuard />
       {/* Header */}
       {showHeader && (
         <header className="fixed top-0 left-0 right-0 z-50 bg-[#0e0f12]/95 backdrop-blur-xl border-b border-gray-800/50 max-w-[600px] mx-auto">
@@ -100,4 +103,30 @@ export function Layout({ children, showTabBar = true, showHeader = true }: Layou
       )}
     </div>
   );
+}
+
+function AntiCopyGuard() {
+  useEffect(() => {
+    const onContext = (e: MouseEvent) => e.preventDefault();
+    const onSelectStart = (e: Event) => e.preventDefault();
+    const onKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && ['s','u','c','p','x'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+      }
+      if (e.key === 'PrintScreen') {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener('contextmenu', onContext);
+    document.addEventListener('selectstart', onSelectStart as any);
+    document.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.removeEventListener('contextmenu', onContext);
+      document.removeEventListener('selectstart', onSelectStart as any);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, []);
+  return null;
 }

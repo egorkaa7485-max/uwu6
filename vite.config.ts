@@ -4,6 +4,8 @@ import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 export default defineConfig({
+  // Use relative base so assets resolve inside Telegram Mini Apps webview
+  base: './',
   plugins: [
     react(),
     runtimeErrorOverlay(),
