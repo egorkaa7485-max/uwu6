@@ -21,6 +21,7 @@ import CaseDetail from "@/pages/CaseDetail";
 import Games from "@/pages/Games";
 import Upgrade from "@/pages/Upgrade";
 import Coinflip from "@/pages/Coinflip";
+import Crash from "@/pages/Crash";
 import Wallet from "@/pages/Wallet";
 import Support from "@/pages/Support";
 
@@ -40,6 +41,7 @@ function Router() {
         <Route path="/games" component={Games} />
         <Route path="/games/upgrade" component={Upgrade} />
         <Route path="/games/coinflip" component={Coinflip} />
+        <Route path="/games/crash" component={Crash} />
         <Route path="/wallet" component={Wallet} />
         <Route path="/profile" component={Profile} />
         <Route path="/support" component={Support} />
