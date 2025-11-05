@@ -25,28 +25,17 @@ export default function Onboarding4() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.15, duration: 0.5, ease: "easeOut" }}
-          className="w-full max-w-md mb-auto"
+          className="w-full max-w-md mb-auto flex items-center justify-center"
         >
-          <div className="relative w-full flex justify-center items-center">
-            <img
-              src="/свг/Group 56.svg"
-              alt="Group 56"
-              className="w-24 h-24 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2"
-            />
-            <img
-              src="/свг/Group 56 (1).svg"
-              alt="Group 56 (1)"
-              className="w-24 h-24 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2"
-            />
-            <img
-              src="/свг/Group 56 (2).svg"
-              alt="Group 56 (2)"
-              className="w-24 h-24 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2"
-            />
-            <img
-              src="/свг/Group 64.svg"
-              alt="Group 64"
-              className="w-32 h-32 relative z-10"
+          <div className="relative w-full h-[348px] flex items-center justify-center">
+            <motion.img
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.25, duration: 0.6, ease: "easeOut" }}
+              src="/свг/leaderboard-welcome.svg"
+              alt="Leaderboard"
+              className="w-full max-w-[357px] h-auto drop-shadow-2xl"
+              data-testid="img-onboarding-leaderboard"
             />
           </div>
         </motion.div>
