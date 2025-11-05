@@ -212,40 +212,6 @@ export const Main = (): JSX.Element => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="px-4 pb-4"
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ 
-            duration: 0.6, 
-            delay: 0.35,
-            ease: [0.25, 0.46, 0.45, 0.94]
-          }}
-          whileHover={{ 
-            scale: 1.01, 
-            y: -2,
-            transition: { duration: 0.2, ease: "easeOut" }
-          }}
-          whileTap={{ 
-            scale: 0.99,
-            transition: { duration: 0.1 }
-          }}
-          className="mb-4 cursor-pointer"
-          data-testid="banner-cases"
-        >
-          <img
-            className="w-full h-auto rounded-3xl"
-            alt="Cases banner"
-            src="/figmaAssets/cases-banner.svg"
-          />
-        </motion.div>
-      </motion.section>
-
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
         className="px-4 pb-6"
       >
         <div className="inline-flex items-center gap-1.5 mb-3">
@@ -260,6 +226,33 @@ export const Main = (): JSX.Element => {
         </div>
 
         <div className="grid grid-cols-2 gap-2">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ 
+              duration: 0.6, 
+              delay: 0.4,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+            whileHover={{ 
+              scale: 1.01, 
+              y: -2,
+              transition: { duration: 0.2, ease: "easeOut" }
+            }}
+            whileTap={{ 
+              scale: 0.99,
+              transition: { duration: 0.1 }
+            }}
+            className="col-span-2 cursor-pointer"
+            data-testid="banner-cases"
+          >
+            <img
+              className="w-full h-auto rounded-3xl"
+              alt="Cases banner"
+              src="/figmaAssets/cases-banner.svg"
+            />
+          </motion.div>
+
           {gameCards.map((game, index) => (
             <motion.div
               key={index}

@@ -23,7 +23,7 @@
 
 ## Remaining Tasks (96 Figma SVG files)
 [x] 14. Fixed package.json (removed figma-developer-mcp) and installed dependencies
-[x] 15. Added cases banner (Mask group.svg) to Main page above game icons with animation
+[x] 15. Added cases banner (Mask group.svg) inside Popular Games section with animation
 [ ] 16. Update Onboarding pages (1-4) according to Figma designs
 [ ] 17. Update Main page with GameCard components and navigation
 [ ] 18. Update Games pages:
