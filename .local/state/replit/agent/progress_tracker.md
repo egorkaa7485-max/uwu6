@@ -24,17 +24,18 @@
 ## Remaining Tasks (96 Figma SVG files)
 [x] 14. Fixed package.json (removed figma-developer-mcp) and installed dependencies
 [x] 15. Added cases banner (Mask group.svg) inside Popular Games section with animation
-[ ] 16. Update Onboarding pages (1-4) according to Figma designs
-[ ] 17. Update Main page with GameCard components and navigation
-[ ] 18. Update Games pages:
+[x] 16. Updated Onboarding page 1 with single centered SVG (Group 59) from game приветствие
+[ ] 17. Update remaining Onboarding pages (2-4) according to Figma designs
+[ ] 18. Update Main page with GameCard components and navigation
+[ ] 19. Update Games pages:
   - Cases (12 variants through config)
   - Coinflip (7 variants through config)
   - Upgrade (4 variants through config)
-[ ] 19. Update Wallet page (11 variants through config)
-[ ] 20. Update Profile page (9 variants through config)
-[ ] 21. Create Telegram service (server/utils/telegram.ts) with secure env token
-[ ] 22. Add route-level transitions through AnimatePresence
-[ ] 23. Test all pages and validate against Figma SVG designs
+[ ] 20. Update Wallet page (11 variants through config)
+[ ] 21. Update Profile page (9 variants through config)
+[ ] 22. Create Telegram service (server/utils/telegram.ts) with secure env token
+[ ] 23. Add route-level transitions through AnimatePresence
+[ ] 24. Test all pages and validate against Figma SVG designs
 
 ## Architecture Notes
 - Using component-first approach: shared primitives before individual pages

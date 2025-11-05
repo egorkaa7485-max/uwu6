@@ -27,30 +27,15 @@ export default function Onboarding1() {
           transition={{ delay: 0.15, duration: 0.5, ease: "easeOut" }}
           className="relative w-full max-w-sm mb-auto flex items-center justify-center"
         >
-          <div className="relative w-full h-[400px] flex items-center justify-center">
+          <div className="relative w-full h-[444px] flex items-center justify-center">
             <motion.img
-              initial={{ x: -50, y: 30, rotate: -8, opacity: 0 }}
-              animate={{ x: -80, y: 40, rotate: -11, opacity: 1 }}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.25, duration: 0.6, ease: "easeOut" }}
-              src="/свг/Group 68.svg"
-              alt="Crash"
-              className="absolute left-[-20px] bottom-[40px] w-[160px] sm:w-[182px] h-auto z-30 drop-shadow-2xl"
-            />
-            <motion.img
-              initial={{ y: -40, rotate: -5, opacity: 0 }}
-              animate={{ y: -40, rotate: -4.3, opacity: 1 }}
-              transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
-              src="/свг/onboarding.svg"
-              alt="Plinko"
-              className="absolute left-[100px] top-[-20px] w-[180px] sm:w-[190px] h-auto z-20 drop-shadow-2xl"
-            />
-            <motion.img
-              initial={{ x: 50, y: 20, rotate: 10, opacity: 0 }}
-              animate={{ x: 50, y: 15, rotate: 15, opacity: 1 }}
-              transition={{ delay: 0.45, duration: 0.6, ease: "easeOut" }}
-              src="/свг/Group 71.svg"
-              alt="Upgrade"
-              className="absolute right-[-30px] top-[100px] w-[230px] sm:w-[255px] h-auto z-10 drop-shadow-2xl"
+              src="/свг/game-welcome.svg"
+              alt="Popular games"
+              className="w-full max-w-[359px] h-auto drop-shadow-2xl"
+              data-testid="img-onboarding-games"
             />
           </div>
         </motion.div>
