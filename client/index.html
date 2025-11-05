@@ -12,5 +12,38 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Lightweight anti-copy and devtools deterrents
+      (function () {
+        const blockedCombos = new Set([
+          "Control+s",
+          "Control+p",
+          "Control+u",
+          "Control+Shift+i",
+          "Control+Shift+j",
+          "Control+Shift+c",
+          "F12",
+        ]);
+
+        document.addEventListener("contextmenu", (e) => {
+          e.preventDefault();
+        });
+
+        document.addEventListener("keydown", (e) => {
+          const key = [
+            e.ctrlKey ? "Control" : "",
+            e.shiftKey ? "Shift" : "",
+            e.key,
+          ]
+            .filter(Boolean)
+            .join("+")
+            .toLowerCase();
+          if (blockedCombos.has(key)) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
