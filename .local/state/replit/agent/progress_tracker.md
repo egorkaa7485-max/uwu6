@@ -22,17 +22,19 @@
 [x] 13. Implemented proper game simulation logic in Crash page
 
 ## Remaining Tasks (96 Figma SVG files)
-[ ] 14. Update Onboarding pages (1-4) according to Figma designs
-[ ] 15. Update Main page with GameCard components and navigation
-[ ] 16. Update Games pages:
+[x] 14. Fixed package.json (removed figma-developer-mcp) and installed dependencies
+[x] 15. Added cases banner (Mask group.svg) to Main page above game icons with animation
+[ ] 16. Update Onboarding pages (1-4) according to Figma designs
+[ ] 17. Update Main page with GameCard components and navigation
+[ ] 18. Update Games pages:
   - Cases (12 variants through config)
   - Coinflip (7 variants through config)
   - Upgrade (4 variants through config)
-[ ] 17. Update Wallet page (11 variants through config)
-[ ] 18. Update Profile page (9 variants through config)
-[ ] 19. Create Telegram service (server/utils/telegram.ts) with secure env token
-[ ] 20. Add route-level transitions through AnimatePresence
-[ ] 21. Test all pages and validate against Figma SVG designs
+[ ] 19. Update Wallet page (11 variants through config)
+[ ] 20. Update Profile page (9 variants through config)
+[ ] 21. Create Telegram service (server/utils/telegram.ts) with secure env token
+[ ] 22. Add route-level transitions through AnimatePresence
+[ ] 23. Test all pages and validate against Figma SVG designs
 
 ## Architecture Notes
 - Using component-first approach: shared primitives before individual pages
