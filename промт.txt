@@ -1,0 +1,152 @@
+game приветствие
+lidearboard приветствие
+cards приветствие
+pay приветствие
+main(11)
+cases
+profile
+upgrade
+coinfilpe
+в этих папках находятся страницы в свг формате и все элементы страниц в свг формате изучи и вставляй их на стриницы
+скачай и используй графику из макета при работе с figma используй абсолютные пути при написании кода проекта трансформируй абсолютные пути в относительные изучи проект полностью все файлы в папке сайт верстка лежит сайт дизайн без фото фото и свг изображения готового сайта есть в папке фигма и теперь проанализировав проект доделай страницы и переделай страницы по фигмам и фигме 1 в 1 при необходимости скачай графику из проекта используй BEM naming при работе с фигма используй абсолютные пути при написании кода проекта трансформируй абсолютные в относительные   полностью проект в UWU6 измени приветсввенные страницы главную профиль что бы они были 1 в 1 как в фигме скачай илюстрации если нужно так же создай страницу кейсов и коинфлипа(1 в 1 как в фигме) если надо скачай илюстрации сделай их логику и полую работуспособность добавь плавные красивые анимации везде скачай всю графику со всех страниц figma https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=0-1&t=Y6t5240cjY6ENQ7N-1 добавь недостающие элементы сделай дизайн 1 в 1 как в фигме все страницы создай 1 в 1 подключи переходы по логике анимации и бэкенд сделай токен тг бота( 8429222084:AAG3Hrz5DdwGnX_MJqgdOlM9O3bisM83004 ) регистрация автаматическая по данным тг , не реализовывай краш и плинко и админку ,все остальное реализуй добавь анимации бэкенд защиты от взлома что бы нельзя было скопировать сайт в кейсах пока сделай как в фигме и реализуй функцианал что бы все было рабочее адаптируй под разные экраны не добавляй ничего лишнего так же в фигме сверху и внизу присутствует интерфейс телефона и тг не добавляй его все кнопки и функцианал игр чатов должен быть рабочий без денег и прикоченного кошелька нельзя играть в игры проанализируй максимально подробна фигму и промт и реализуй готовый сайт(с тг интеграцией) с защитами и играми и функцианалами и чатом поддержки если добавляешь не дост ающие элементы делай это под стилистику сайта реализуй функцианал готового сайта по этим данным за один запрос реализовывай постепенно токены я вставлю потом все ты должен реализовать и дополнить строго по фигме дизайн и функцианал тг мини апп все страницы из фигмы в формате свг(что бы ты мог копировать сверять элементы) лежат в папке фигма 
+
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-5429&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-5571&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-5509&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-5475&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-5434&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3331-1927&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-623&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-294&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-370&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-547&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-446&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-677&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-5786&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-5675&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-5898&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-6048&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-6232&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-6449&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-6699&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-6879&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-6906&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-6941&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-6984&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-7035&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-2346&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-2569&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-1717&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-1576&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-1752&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-1752&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-2034&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-2175&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-2807&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-3537&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-3637&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-3755&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-3904&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-2977&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-3105&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-3236&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-3390&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-2900&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-4029&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-4229&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-4356&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-4818&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-4931&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-5043&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-5153&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-5265&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-4473&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-4588&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-4703&t=FTMy7oZD6Jxwl18p-1
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=3321-4111&t=FTMy7oZD6Jxwl18p-1
+
+
+
+https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=0-1&t=jRz1IX3IfsycRZgl-1 https://www.figma.com/design/Rth5eJLWVLe3CHbtvym6Rn/egorkaaa7485-s-team-library?node-id=0-1&m=dev&t=jRz1IX3IfsycRZgl-1 скопируй дизайн всех страниц и создай точную копию со всеми элеменртами строга придерживайся фигмы так же есть свг и пнг изображения страниц из фигмы в папке фигма можешь переобразовать свг в код и создать страницы все так же добавь логику переходов и проанализируй текущий сайт и добавь или измени элементы что бы они были 1 в 1 как фигма с теми же элементами(например на приветсвенной странице щас неправильно и неправильные элементы стоят) не добавляй ничего своего делай строго по фигме я добавил ссылку на каждую страницу сайта фигмы и саму фигму со всеми элементами + папка фигма где свг изображения и пнг изображения страниц из фигмы всех)Техническое Задание для Разработчиков: Игровая Платформа "Case Rush"
+Проект: Игровая экосистема в Telegram.
+
+Мы создаем высококлассную игровую платформу внутри Telegram, ориентированную на азартные механики и современный пользовательский опыт. Цель — стать лидером в нише Telegram-казино за счет продуманной экономики, качественных анимаций, стабильности и уникальной системы взаимодействия с цифровыми активами.
+
+Архитектура Системы: Система представляет собой клиент-серверное приложение, состоящее из 5 взаимосвязанных компонентов:
+
+Telegram Mini App (Frontend): Клиентская часть, с которой взаимодействует пользователь. Отвечает за интерфейс, анимации и отправку запросов на сервер.
+Основной Сервер (Backend): "Мозг" и ядро проекта. Отвечает за всю бизнес-логику: аутентификацию, управление пользователями, игровую математику, обработку транзакций, безопасность, систему чатов и интеграцию с внешними сервисами.
+Telegram-бот (Финансовый шлюз для депозитов): Его единственная функция — принимать подарки от пользователей. Он слушает API Telegram, и при получении подарка передает данные на основной бэкенд для оценки и зачисления средств.
+Сервис PORTAL (Интеграция для вывода и управления): Используется в двух сценариях:
+Для пользователей (невидимо): Бэкенд использует API PORTAL для создания (минтинга) NFT-предметов, которые выпадают в кейсах, и для генерации подарочных ссылок при запросе вывода.
+Для Владельца: Платформа PORTAL используется как инструмент для управления и продажи активов, полученных от пользователей через Telegram-бота.
+Админ-панель: Веб-интерфейс для полного операционного контроля над проектом со стороны команды.
+Ключевой Принцип: Клиент не является доверенным источником. Вся игровая логика, расчёт шансов и финансовые операции выполняются исключительно на сервере.
+
+Глобальные Требования к Качеству (Нефункциональные)
+Производительность и Отзывчивость:
+
+Приложение должно ощущаться мгновенным. Переходы между экранами и отклик на действия пользователя должны быть быстрыми, без лагов и подвисаний.
+Frontend: Обязательна оптимизация (code-splitting, lazy loading).
+Backend: Среднее время ответа API не должно превышать 300 мс. Обязательно использование кэширования (Redis) для часто запрашиваемых данных.
+Качество Анимаций:
+
+Анимации — ключевой элемент, создающий "вау-эффект". Они должны быть плавными (60 FPS), физически корректными и полностью соответствовать дизайн-макетам.
+Функциональные Требования к Mini App (Frontend)
+Локализация: Приложение должно поддерживать два языка: Русский (RU) и Английский (EN). Язык определяется автоматически, с возможностью ручного переключения в профиле.
+
+Способы пополнения баланса:
+
+Telegram Stars: Интеграция с Telegram Payments.
+TON: Интеграция с кошельками через TON Connect 2.0.
+Депозит Подарком: Понятная инструкция и кнопка, ведущая в диалог с Telegram-ботом для отправки подарка.
+Навигация и Экраны:
+
+Навигация: Стандартная с Header (Онлайн, Баланс, Профиль) и Tab Bar (Кейсы, Игры, Бонусы, Профиль).
+Игровые режимы:
+Кейсы: 12+ категорий, детальный просмотр с топ-дропами, плавная анимация "рулетки".
+Краш: С уникальной 2D-анимацией вора и полицейского.
+Апгрейд: Улучшение предметов с отображением шанса.
+PvP Монетка: Лобби, создание игры, анимация монеты с PEPE.
+Плинко: Классическая пирамида в фирменном стиле.
+Профиль: Система уровней, XP и рангов, инвентарь (где хранятся выигранные NFT-предметы), реферальная программа.
+Поддержка: В профиле пользователя должна быть кнопка "Связаться с поддержкой", открывающая полноценный интерфейс чата, отображающий историю переписки и позволяющий отправлять новые сообщения в реальном времени.
+Экономическая Модель и Логика (Backend)
+Математика Игр: Целевой RTP (Return-to-Player) — 97% (House Edge 3%).
+
+Апгрейд: Комиссия 5%.
+PvP Монетка: Рейк 5%.
+Все параметры должны быть настраиваемыми в админ-панели.
+Система Поддержки (Чат):
+
+Реализация: Двусторонняя real-time коммуникация между пользователем и модератором должна быть реализована через WebSocket.
+База данных: Необходимо спроектировать таблицы для хранения диалогов и сообщений с привязкой к ID пользователя и модератора.
+Внешние Интеграции
+Telegram-бот (Только для депозитов):
+
+Задача: Автоматизировать прием подарков.
+Сценарий: Пользователь отправляет боту подарок. Бэкенд перехватывает событие, по внутренней таблице цен определяет стоимость подарка в Stars, зачисляет эту сумму на баланс пользователя и уведомляет его об успехе.
+Сервис PORTAL (Для вывода и управления):
+
+Важно: Для обычного пользователя интеграция полностью невидима.
+Сценарий вывода: Когда пользователь выигрывает предмет, бэкенд в фоне создает (минтит) соответствующий NFT через API PORTAL. При запросе вывода, бэкенд генерирует подарочную ссылку для этого NFT и отдает ее пользователю.
+Безопасность и Анти-фрод Система
+Мульти-аккаунтинг: Система должна отслеживать и помечать аккаунты с общими идентификаторами.
+Лимиты: Настраиваемые в админ-панели суточные и недельные лимиты на вывод.
+Админ-панель
+Язык интерфейса — только Русский.
+
+Ролевая модель доступа:
+
+Владелец: Полный доступ, управление ролями, просмотр логов действий администраторов.
+Администратор: Управление всеми аспектами платформы, кроме настроек доступа.
+Модератор поддержки: Основная роль — ведение переписки с пользователями через чат поддержки. Имеет доступ "только для чтения" к профилям пользователей для получения контекста.
+Ключевые разделы:
+
+Dashboard: Основные метрики (оборот, прибыль, DAU, RTP).
+Поддержка (Live Chat): Основной раздел для Модераторов. Интерфейс со списком диалогов, окном переписки и панелью с информацией о пользователе для быстрого контекста.
+Управление играми: Тумблер "Вкл/Выкл", редактор кейсов с калькулятором RTP.
+Управление пользователями: Поиск, просмотр, ручное начисление/списание баланса с обязательной причиной.
+Управление предметами: Создание/редактирование предметов, которые будут минтиться в PORTAL.
+Финансы: Таблица цен для конвертации подарков, полученных ботом.
+Безопасность: Раздел с алертами и настройками лимитов. делай строго по фигме ничего лишнего добавь красивые анимации реализуй бэк и логику переходы что бы сайт был полностью готовый 1 в 1 скопированный с фигмы я добавил ссылки на все фигмы скачай от туда все элюстрации и добавь в папку с асетами проанализируй полностью проект в UWU6 измени приветсввенные страницы главную профиль что бы они были 1 в 1 как в фигме скачай илюстрации если нужно так же создай страницу кейсов и коинфлипа(1 в 1 как в фигме) если надо скачай илюстрации сделай их логику и полую работуспособность добавь плавные красивые анимации везде 

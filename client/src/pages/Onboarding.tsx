@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Coins, Gift, Star, Trophy, Crown, Gem, Sparkles } from "lucide-react";
 
 const onboardingScreens = [
-  { id: 1, type: "welcome" as const, image: "/свг/onboarding.svg" },
+  { id: 1, type: "welcome" as const, image: "/game приветствие/Frame 35 (7).svg" },
   { id: 2, type: "popular-games" as const, image: "/свг/onboarding (1).svg" },
   { id: 3, type: "leaderboard" as const, image: "/свг/onboarding (2).svg" },
   { id: 4, type: "wallet-cards" as const, image: "/свг/onboarding (3).svg" },
